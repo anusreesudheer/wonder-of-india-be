@@ -73,16 +73,3 @@ export const getAllTour = async (req, res) =>{
     }
 };
 
-//Get featured Tour
-export const getFeaturedTour = async (req, res) => {
-    
- 
-    try {
-       const tours = await Tour.find({ featured: true })
- 
-       res.status(200).json({ success: true, message: 'Successfully', data: tours })
-    } catch (error) {
-       res.status(404).json({ success: false, message: 'Not Found' })
-    }
- }
- 
