@@ -23,9 +23,7 @@ const corsOptions ={
 // database connection
 const connect =async () =>{
   try{
-    await mongoose.connect('mongodb+srv://anusreesudheer1995:WZtH800Zt8Svz0WA@cluster0.rhw3prf.mongodb.net/',{
-    //useNewUrlParser:true,
-    //useUnifiedTopology:true, 
+    await mongoose.connect(process.env.URL,{
     })
     console.log('MongoDb database is connected');
   }catch(err){
