@@ -48,15 +48,16 @@ export const login = async (req, res) => {
             return res.status(401).json({success: false, message:'Incorrect email or password'})
         }
 
-        const { password, role,  ...rest } = user._doc;
+        // const { password, role,  ...rest } = user._doc;
 
-        const token = jwt.sign(
-           {id: user._id, role:user.role },process.env.JWT_SECRET_KEY,{expiresIn:"15d"}
+        // const token = jwt.sign(
+        //    {id: user._id, role:user.role },process.env.JWT_SECRET_KEY,{expiresIn:"15d"}
            
-        );
+        // );
 
-        res.cookie("accessToken", token, {httpOnly: true, expires:token.expiresIn}).status(200).json({success: true, message: "Sucessfully login",token, data:{...rest}, role,});
-            
+        // res.cookie("accessToken", token, {httpOnly: true, expires:token.expiresIn}).status(200).json({success: true, message: "Sucessfully login",token, data:{...rest}, role,});
+        req.session.user = user; 
+        res.status(200).json({ success: true, message: 'Successfully logged in' });  
         
     }catch(error){
         res.status(500).json({success: false, message:'failed to login'});

@@ -1,6 +1,6 @@
 import express from 'express'
 import { createTour, updateTour, deleteTour, getSingleTour, getAllTour, } from './../Controllers/tourcontroller.js'
-import { verifyAdmin } from '../utils/verifyToken.js';
+//import { verifyAdmin } from '../utils/verifyToken.js';
 
 
 const router = express.Router()

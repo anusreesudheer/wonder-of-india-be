@@ -1,6 +1,6 @@
 import express from 'express'
 import { createBooking ,getBooking, getAllBooking,getAllBookingbyUser} from '../Controllers/bookingController.js';
-import { verifyUser,verifyAdmin } from '../utils/verifyToken.js';
+//import { verifyUser,verifyAdmin } from '../utils/verifyToken.js';
 
 const router = express.Router()
 
