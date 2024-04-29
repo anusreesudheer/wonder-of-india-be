@@ -4,7 +4,7 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
-//var bcrypt = require('bcryptjs');
+
 
 import tourRoute from './routes/tours.js'
 import userRoute from './routes/users.js'
