@@ -15,8 +15,7 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
 const corsOptions ={
-  origin: ['https://wonder-of-india.onrender.com','http://localhost:4000/api/v1'],
-  credentials: true,
+  origin:['https://wonder-of-india-fe.onrender.com','http://localhost:5173'],
 }
 
 
@@ -36,6 +35,7 @@ const connect =async () =>{
 app.use(express.json())
 app.use(cors(corsOptions))
 app.use(cookieParser())
+
 app.use(bodyParser.json());
 
 app.use("/api/v1/auth" ,authRoute);
