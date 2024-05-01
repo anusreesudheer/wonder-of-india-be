@@ -15,9 +15,9 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
 const corsOptions ={
-  origin: true,
+  origin: ['https://wonder-of-india-fe.onrender.com','http://localhost:8000']
 }
-//['https://wonder-of-india-fe.onrender.com','http://localhost:3000']
+//['https://wonder-of-india-fe.onrender.com','http://localhost:4000']
 
 // database connection
 const connect =async () =>{
