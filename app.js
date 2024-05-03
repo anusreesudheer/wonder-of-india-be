@@ -17,7 +17,6 @@ const port = process.env.PORT || 8000
 const corsOptions ={
   origin: ['https://wonder-of-india-fe.onrender.com','http://localhost:5173']
 }
-//['https://wonder-of-india-fe.onrender.com','http://localhost:4000']
 
 // database connection
 const connect =async () =>{

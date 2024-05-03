@@ -66,8 +66,8 @@ export const login = async (req, res) => {
 
 export const getAllUser = async (req, res) =>{
   try{
-       
-      const users = await User.find({})
+    const userId = req.params.userId 
+      const users = await User.find({userId:userId})
 
       res.status(200).json({success: true, message: "Sucessfully", data:users});
 

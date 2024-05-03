@@ -61,8 +61,8 @@ export const getSingleTour = async (req, res) =>{
 // getAll tour
 export const getAllTour = async (req, res) =>{
     try{
-         
-        const tours = await Tour.find({})
+        const userId = req.params.userId
+        const tours = await Tour.find({userId:userId})
 
         res.status(200).json({success: true, message: "Sucessfully", data:tours});
 
