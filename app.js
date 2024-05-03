@@ -42,10 +42,10 @@ app.use("/api/v1/tours" ,tourRoute);
 app.use("/api/v1/users" ,userRoute);
 app.use("/api/v1/booking" ,bookingRoute);
 
-app.get('*', (req, res) => {
-  // This will handle any other routes not matched above
-  res.status(404).send('Route not found');
-});
+// app.get('*', (req, res) => {
+//   // This will handle any other routes not matched above
+//   res.status(404).send('Route not found');
+// });
 
 app.listen(port,()=>{
   connect();

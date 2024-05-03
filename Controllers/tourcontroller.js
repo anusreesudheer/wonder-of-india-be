@@ -2,7 +2,11 @@ import Tour from '../models/Tour.js'
 
 // create new tour
 export const createTour = async(req, res) => {
-    const newTour = new Tour(req.body);
+    const newTour = new Tour({
+        ...req.body,
+        photo: req.file.path // Save the file path in the database
+    });
+    
     try{
         const savedTour = await newTour.save();
 
