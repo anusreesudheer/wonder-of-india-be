@@ -44,16 +44,6 @@ app.use("/api/v1/tours" ,tourRoute);
 app.use("/api/v1/users" ,userRoute);
 app.use("/api/v1/booking" ,bookingRoute);
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    // Define the destination folder where the uploaded files will be stored
-    cb(null, 'Jaipur/');
-  },
-  filename: function (req, file, cb) {
-    // Define the filename for the uploaded files
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-  }
-});
 
 // app.get('*', (req, res) => {
 //   // This will handle any other routes not matched above
