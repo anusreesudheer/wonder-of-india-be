@@ -7,7 +7,7 @@ const router = express.Router()
 
 
 //create new tour
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: 'Jaipur/' });
 router.post("/", upload.single('photo'), createTour);
 
 //update new tour

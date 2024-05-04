@@ -47,7 +47,7 @@ app.use("/api/v1/booking" ,bookingRoute);
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // Define the destination folder where the uploaded files will be stored
-    cb(null, 'uploads/');
+    cb(null, 'Jaipur/');
   },
   filename: function (req, file, cb) {
     // Define the filename for the uploaded files
