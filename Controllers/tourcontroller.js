@@ -1,23 +1,8 @@
 import Tour from '../models/Tour.js'
-import multer from 'multer';
 
-
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'images/'); // Folder where files will be stored
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.originalname);
-    },
-});
-
-const upload = multer({ storage: storage });
 // create new tour
 export const createTour = async(req, res) => {
-    const newTour = new Tour({
-        ...req.body,
-        photo: req.file.path // Save the file path in the database
-    });
+    const newTour = new Tour(req.body)
     
     try{
         const savedTour = await newTour.save();

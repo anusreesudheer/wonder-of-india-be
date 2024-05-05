@@ -4,7 +4,6 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import mongoose from 'mongoose'
 import bodyParser from 'body-parser'
-import multer from 'multer'
 
 
 import tourRoute from './routes/tours.js'
@@ -32,7 +31,6 @@ const connect =async () =>{
 
 
 //middleware
-app.use(express.static('public'));
 app.use(express.json())
 app.use(cors(corsOptions))
 app.use(cookieParser())
@@ -43,7 +41,6 @@ app.use("/api/v1/auth" ,authRoute);
 app.use("/api/v1/tours" ,tourRoute);
 app.use("/api/v1/users" ,userRoute);
 app.use("/api/v1/booking" ,bookingRoute);
-
 
 // app.get('*', (req, res) => {
 //   // This will handle any other routes not matched above
