@@ -15,7 +15,8 @@ dotenv.config()
 const app = express()
 const port = process.env.PORT || 8000
 const corsOptions ={
-  origin: ['https://wonder-of-india-fe.onrender.com','http://localhost:5173']
+  origin: ['https://wonder-of-india-fe.onrender.com','http://localhost:5173'],
+  credential:true,
 }
 
 // database connection
@@ -35,17 +36,29 @@ app.use(express.json())
 app.use(cors(corsOptions))
 app.use(cookieParser())
 
+app.use(express.static('public'))
+app.use(express.static('public'))
+app.use(express.static('files'))
+
 app.use(bodyParser.json());
+
+app.use('/static', express.static('public'))
 
 app.use("/api/v1/auth" ,authRoute);
 app.use("/api/v1/tours" ,tourRoute);
 app.use("/api/v1/users" ,userRoute);
 app.use("/api/v1/booking" ,bookingRoute);
 
-// app.get('*', (req, res) => {
-//   // This will handle any other routes not matched above
-//   res.status(404).send('Route not found');
-// });
+app.use((req, res, next) => {
+  // Your rewrite rule logic goes here
+  // For example, you might want to redirect all requests from '/old-route' to '/new-route'
+  if (req.path === '/http://localhost:5173') {
+    return res.redirect(301, '/https://wonder-of-india-fe.onrender.com');
+  }
+  // If no rewrite rule matches, continue to the next middleware/route handler
+  next();
+});
+
 
 app.listen(port,()=>{
   connect();
