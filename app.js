@@ -49,15 +49,15 @@ app.use("/api/v1/tours" ,tourRoute);
 app.use("/api/v1/users" ,userRoute);
 app.use("/api/v1/booking" ,bookingRoute);
 
-app.use((req, res, next) => {
-  // Your rewrite rule logic goes here
-  // For example, you might want to redirect all requests from '/old-route' to '/new-route'
-  if (req.path === '/http://localhost:5173') {
-    return res.redirect(301, '/https://wonder-of-india-fe.onrender.com');
-  }
-  // If no rewrite rule matches, continue to the next middleware/route handler
-  next();
-});
+// app.use((req, res, next) => {
+//   // Your rewrite rule logic goes here
+//   // For example, you might want to redirect all requests from '/old-route' to '/new-route'
+//   if (req.path === '/http://localhost:5173') {
+//     return res.redirect(301, '/https://wonder-of-india-fe.onrender.com');
+//   }
+//   // If no rewrite rule matches, continue to the next middleware/route handler
+//   next();
+// });
 
 
 app.listen(port,()=>{

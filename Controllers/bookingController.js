@@ -15,18 +15,18 @@ export const createBooking = async(req,res) => {
    }
 }
 
-// get single booking
-export const getBooking = async(req,res) => {
-   const id = req.params.id
-   
-   try {
-      const book = await Booking.findById(id)
 
-      res.status(200).json({success:true, message:"Successful!", data:book})
+// Get bookings by userId
+export const getBookingByUserId = async (req, res) => {
+   const { userId } = req.query;
+  
+   try {
+     const bookings = await Booking.find({ userId });
+     res.json({success:true, message:"Successful", data:bookings});
    } catch (error) {
-      res.status(404).json({success:true, message:"Not Found!"})
+     res.status(500).json({ error: 'Failed to fetch bookings' });
    }
-} 
+ };
 
 
 // get all booking
@@ -42,15 +42,15 @@ export const getAllBooking = async(req,res) => {
 } 
 
 // get all booking by user
-export const getAllBookingbyUser = async(req,res) => {
+// export const getAllBookingbyUser = async(req,res) => {
 
-   try {
-      const userId = req.params.userId
-      const bookings = await Booking.find({userId: userId})
-      res.json(bookings)
+//    try {
+//       const userId = req.params.userId
+//       const bookings = await Booking.find({userId: userId})
+//       res.json(bookings)
       
-   } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
+//    } catch (error) {
+//       res.status(500).json({ error: 'Internal Server Error' });
       
-   }
-}
+//    }
+// }

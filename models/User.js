@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema(
     userName: {
       type: String,
       required: true,
-      unique: true, 
+      unique: true,
     },
     email: {
       type: String,
@@ -23,7 +23,16 @@ const userSchema = new mongoose.Schema(
 
     role: {
       type: String,
-      default: "user",
+      enum: ['user', 'admin'],
+      default: 'user',
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+    updatedAt: {
+      type: Date,
+      default: Date.now,
     },
   },
   { timestamps: true }
