@@ -1,15 +1,16 @@
 import express from 'express'
 import { createTour, updateTour, deleteTour, getSingleTour, getAllTour, } from './../Controllers/tourcontroller.js'
 //import { verifyAdmin } from '../utils/verifyToken.js';
+import upload from '../middleware/upload.js';
 
 
 const router = express.Router()
 
 //create new tour
-router.post("/",  createTour);
+router.post("/",upload.single('photo'),  createTour);
 
 //update new tour
-router.put("/:id", updateTour);
+router.put("/:id",upload.single('photo'), updateTour);
 
 //delete new tour
 router.delete("/:id", deleteTour);
