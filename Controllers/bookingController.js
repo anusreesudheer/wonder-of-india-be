@@ -18,14 +18,19 @@ export const createBooking = async(req,res) => {
 
 // Get bookings by userId
 export const getBookingByUserId = async (req, res) => {
-   const { userId } = req.query;
-  
    try {
-     const bookings = await Booking.find({ userId });
-     res.json({success:true, message:"Successful", data:bookings});
-   } catch (error) {
-     res.status(500).json({ error: 'Failed to fetch bookings' });
-   }
+      const { userId } = req.query;
+      const data = await Booking.find({ userId });
+  
+      if (data.length > 0) {
+        res.json({ success: true, message: 'Successful', data });
+      } else {
+        res.status(404).json({ success: false, message: 'Data not found' });
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      res.status(500).json({ success: false, message: error.message });
+    }
  };
 
 
