@@ -19,11 +19,11 @@ export const createBooking = async(req,res) => {
 // Get bookings by userId
 export const getBookingByUserId = async (req, res) => {
    try {
-      const { userId } = req.query;
+      const { userId } = req.params;
       const data = await Booking.find({ userId });
   
       if (data.length > 0) {
-        res.json({ success: true, message: 'Successful', data });
+        res.json({ success: true, message: 'Successful', data:data });
       } else {
         res.status(404).json({ success: false, message: 'Data not found' });
       }
